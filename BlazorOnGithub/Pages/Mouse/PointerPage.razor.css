@@ -1,0 +1,31 @@
+#mouser{
+    position: relative;
+    /*top: 0;
+    bottom: 20rem;*/
+    left: 10px;
+    right: 10px;
+    height:20rem;
+    background-color: coral;
+}
+
+.argvalues dl {
+    width: 30rem;
+}
+
+.argvalues dt {
+    float: left;
+    width: 15rem;
+    /* adjust the width; make sure the total of both is 100% */
+    background: #f5e482;
+    padding: 1xp;
+    margin: 1px;
+}
+
+.argvalues dd {
+    float: left;
+    width: 10rem;
+    /* adjust the width; make sure the total of both is 100% */
+    background: #f5e482;
+    padding: 1px;
+    margin: 1px;
+}

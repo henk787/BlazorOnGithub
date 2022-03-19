@@ -1,0 +1,55 @@
+﻿@page "/pointer"
+
+<h3>Pointer</h3>
+
+<div id="mouser" @onpointermove="OnMove" @onpointerleave="OnLeave" @onpointerenter="OnEnter" @onclick="OnClick">
+</div>
+
+<div class="argvalues">
+    <dl>
+        <dt>What</dt><dd>@what</dd>
+        <dt>X</dt><dd>@Mouse.ClientX</dd>
+        <dt>Y</dt><dd>@Mouse.ClientY</dd>
+        <dt>Button</dt><dd>@Mouse.Button</dd>
+        <dt>Buttons</dt><dd>@Mouse.Buttons</dd>
+        <dt>Id</dt><dd>@Pointer?.PointerId</dd>
+        <dt>Type</dt><dd>@Pointer?.PointerType</dd>
+        
+    </dl>
+
+</div>
+
+@code {
+    string what = ".";
+
+    MouseEventArgs Mouse = new();
+    PointerEventArgs? Pointer => (Mouse as PointerEventArgs);
+
+    void ShowStatus(string? what, MouseEventArgs  args)
+    {
+        //if (what != null) 
+        this.what = what;
+        this.Mouse = args;        
+    }
+
+    void OnMove(PointerEventArgs args)
+    {
+        ShowStatus(null, args);
+    }
+
+    void OnLeave(PointerEventArgs args)
+    {
+        ShowStatus("Leave", args);
+    }
+
+    void OnEnter(PointerEventArgs args)
+    {
+        ShowStatus("Enter", args);
+    }
+
+    void OnClick(MouseEventArgs args)
+    {
+        ShowStatus("Click", args);
+    }
+
+}
