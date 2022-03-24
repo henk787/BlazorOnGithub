@@ -1,7 +1,38 @@
 ﻿@page "/browserinfo"
 
+@*@inject IServiceCollection  Services*@
+@inject Microsoft.AspNetCore.Components.WebAssembly.Hosting.IWebAssemblyHostEnvironment WebAssemblyHostEnvironment
+@inject Microsoft.AspNetCore.Components.Infrastructure.ComponentStatePersistenceManager ComponentStatePersistenceManager
+
+
 <h3>BrowserInfo</h3>
 
+<dl>
+    @foreach (var line in lines)
+    {
+        <dt>@line.key</dt>
+        <dd>@line.value</dd>
+    }
+</dl>
+
 @code {
+
+    record Item(string key, string? value);
+
+    List<Item> lines = new();
+
+    protected override void OnInitialized()
+    {
+        Add("Environment", WebAssemblyHostEnvironment?.Environment);
+        Add("BaseAddress", WebAssemblyHostEnvironment?.BaseAddress);        
+
+    }
+
+    void Add(string key, string? value)
+    {
+        lines.Add(new Item(key, value));
+    }
+
+
 
 }
