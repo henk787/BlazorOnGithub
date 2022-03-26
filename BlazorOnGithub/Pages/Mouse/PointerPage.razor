@@ -2,7 +2,11 @@
 
 <h3>Pointer</h3>
 
-<div id="mouser" @onpointermove="OnMove" @onpointerleave="OnLeave" @onpointerenter="OnEnter" @onclick="OnClick">
+<div id="mouser" 
+    @onpointermove="OnMove" @onpointermove:preventDefault
+    @onpointerleave="OnLeave" 
+    @onpointerenter="OnEnter" 
+    @onclick="OnClick"  >
 </div>
 
 <div class="argvalues">
